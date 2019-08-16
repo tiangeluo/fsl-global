@@ -1,4 +1,4 @@
-#Few-Shot Learning with Global Class Representations
+## Few-Shot Learning with Global Class Representations
 Created by <a href="https://tiangeluo.github.io/" target="_blank">Tiange Luo*</a>, <a href="" target="_black">Aoxue Li*</a>, <a href="http://personal.ee.surrey.ac.uk/Personal/T.Xiang/index.html" target="_blank">Tao Xiang</a>, <a href="https://www.weiranhuang.com/" target="_blank">Weiran Huang</a> and <a href="https://scholar.google.com/citations?user=VZHxoh8AAAAJ&hl=zh-CN" target="_blank">Liwei Wang</a>
 
 ![Overview](https://github.com/tiangeluo/fsl-global/blob/master/material/overview.png)
@@ -21,5 +21,5 @@ If you find our work useful in your research, please consider citing:
           year={2019}
         }
 
-##About this repository
+## About this repository
 Due to company and patent issues, the authors are striving for releasing source codes. We will try our best and release the core code of the proposed module at least.
