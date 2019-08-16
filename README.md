@@ -22,4 +22,4 @@ If you find our work useful in your research, please consider citing:
         }
 
 ## About this repository
-Due to company and patent issues, the authors are striving for releasing source codes. We will try our best and release the core code of the proposed module at least.
+Due to company and patent issues, the authors are striving for releasing source codes. We will do our best to release at least the core code of the proposed module.
