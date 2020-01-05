@@ -1,15 +1,26 @@
 ## Few-Shot Learning with Global Class Representations
-Created by <a href="https://tiangeluo.github.io/" target="_blank">Tiange Luo*</a>, <a href="" target="_black">Aoxue Li*</a>, <a href="http://personal.ee.surrey.ac.uk/Personal/T.Xiang/index.html" target="_blank">Tao Xiang</a>, <a href="https://www.weiranhuang.com/" target="_blank">Weiran Huang</a> and <a href="https://scholar.google.com/citations?user=VZHxoh8AAAAJ&hl=zh-CN" target="_blank">Liwei Wang</a>
+Created by <a href="https://tiangeluo.github.io/" target="_blank">Tiange Luo*</a>, <a href="" target="_black">Aoxue Li*</a>, <a href="http://personal.ee.surrey.ac.uk/Personal/T.Xiang/index.html" target="_blank">Tao Xiang</a>, <a href="" target="_blank">Weiran Huang</a> and <a href="http://www.liweiwang-pku.com" target="_blank">Liwei Wang</a>
 
 ![Overview](https://github.com/tiangeluo/fsl-global/blob/master/material/overview.png)
 
+## About this repository
+This is the repository for our ICCV 2019 [paper](https://arxiv.org/abs/1908.05257). In this paper, we propose to tackle the challenging few-shot learning (FSL) problem by learning global class representations for each class via involving both base and novel classes training samples from the beginning. For more details of our framework, please refer to our [paper](https://arxiv.org/abs/1908.05257) or <a href="https://tiangeluo.github.io/GlobalRepresentation.html" target="_blank">project website</a>.
 
-## Introduction
-This is the repository for our ICCV 2019 paper (arXiv report [here](https://arxiv.org/abs/1908.05257)).
+Due to company and patent issues, the author only release the codes of the proposed module. If you want to run those codes, you have to implement and train the hallucinator [Low-shot learning from imaginary data].
 
-In this paper, we propose to tackle the challenging few-shot learning (FSL) problem by learning global class representations using both base and novel class training samples. In each training episode, an episodic class mean computed from a support set is registered with the global representation via a registration module. This produces a registered global class representation for computing the classification loss using a query set. Though following a similar episodic training pipeline as existing meta learning based approaches, our method differs significantly in that novel class training samples are involved in the training from the beginning. To compensate for the lack of novel class training samples, an effective sample synthesis strategy is developed to avoid overfitting. Importantly, by joint base-novel class training, our approach can be easily extended to a more practical yet challenging FSL setting, i.e., generalized FSL, where the label space of test data is extended to both base and novel classes. Extensive experiments show that our approach is effective for both of the two FSL settings.
+## Generalized FSL in the paper
+The generalized FSL test way proposed in the paper is highly similar to the typical 5-way-5-shot FSL. The only difference is that we would do a **all-way** classification (100-way in section 4.2.1, 120-way classification in section 4.3.2). We set three types of evaluation. Please refer to section 4.2.1, in each episode, we will sample 5 classes from base classes (acc_b), novel classes (acc_n), or all classes (acc_a). Then, sampling 5 shots from each class. Finally, for all three types, we will do a all-way classification.
 
-For more details of our framework, please refer to our paper or <a href="https://tiangeluo.github.io/GlobalRepresentation.html" target="_blank">project website</a>.
+In section 4.2.1, follow the class splits as the original miniImageNet, we use the validation set to tune hyper-parameters, use both the training and validation sets as the base classes (80), and use the test set as the novel classes (20). In section 4.3.2, we still use the original training and validation sets as the base classes (80), but use the test set and the new added 20 classes as the novel classes (40).
+
+## Usage
+
+- convnet.py: the network for extracting feature and registrating.
+- train_100way.py: train the model on the 100-way setting.
+- test_100way.py: test in generalized FSL setting descrebed in section 4.2.1.
+- samplers.py: code for sampling data in a 5-way-5-shot manner.
+- csv: dataset splits.
+
 
 ## Citation
 If you find our work useful in your research, please consider citing:
@@ -20,6 +31,3 @@ If you find our work useful in your research, please consider citing:
           journal={arXiv preprint arXiv:1908.05257},
           year={2019}
         }
-
-## About this repository
-Due to company and patent issues, the authors are striving for releasing source codes. We will do our best to release at least the core code of the proposed module.
